@@ -277,8 +277,8 @@ beforeRouteLeave(to, from, next) {
 * beforeEnter
 * beforeRouteEnter
 * beforeResolve
-* afterEach
-* beforeCreat
+* `afterEach`
+* `beforeCreat`
 * created
 * beforeMount
 * mounted
@@ -293,8 +293,6 @@ beforeRouteLeave(to, from, next) {
 ### 双向数据绑定原理
 
 Object.defineProperty()
-
-### 简单说一下vue-router的实现
 
 ### nexttick
 
