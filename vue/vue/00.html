@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue基础</title>
+  <script src="./js/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="counter">
+    <h1>hello, vue</h1>
+    <h2>{{ Date.now() }}</h2>
+    <h2>{{ counter }}</h2>
+    <span v-bind:title="message">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+    <p>{{ message2 }}</p>
+    <button v-on:click="reverseMessage">反转 Message2</button>
+  </div>
+
+  <script>
+    const Counter = {
+      data() {
+        return {
+          counter: 0,
+          message: 'You loaded this page on ' + new Date().toLocaleString(),
+          message2: 'Hello Vue.js!',
+        }
+      },
+      mounted() {
+        // setInterval(() => {
+        //   this.counter++
+        // }, 1000)
+      },
+      methods: {
+        reverseMessage() {
+          this.message2 = this.message2
+            .split('')
+            .reverse()
+            .join('')
+        }
+      }
+    }
+
+    Vue.createApp(Counter).mount('#counter')
+  </script>
+
+</body>
+
+</html>

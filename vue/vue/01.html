@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue基础</title>
+  <script src="./js/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>hello, vue</h1>
+    <h2>{{ count }}</h2>
+  </div>
+
+  <script>
+    const RootComponent = {
+      /* 选项 */
+      data() {
+        return {
+          count: 4
+        }
+      },
+      created() {
+        // `this` 指向 vm 实例
+        console.log('count is: ' + this.count) // => "count is: 1"
+      }
+    }
+    const app = Vue.createApp(RootComponent)
+    const vm = app.mount('#app')
+  </script>
+
+</body>
+
+</html>

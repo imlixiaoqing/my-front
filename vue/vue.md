@@ -1,4 +1,24 @@
-# vue2
+# vue
+
+## 一些概念
+
+### MVVM
+
+1. M：模型（ Model）：data中的数据
+2. V：试图（View）：模板代码
+3. VM：视图模型（ViewModel）：Vue实例
+
+### 单向绑定
+
+* 数据从data流向页面
+
+### 双向绑定 - v-model
+
+* 数据从data流向页面
+* 数据从页面流向data
+* 双向绑定一般应用在表单元素上
+
+### 虚拟DOM
 
 ## 生命周期
 
@@ -314,3 +334,8 @@ Object.defineProperty()
 
 * computed - 基于它们的响应式依赖进行缓存的
 * watch - 数据变化时执行异步或开销较大的操作时
+
+### Mixin
+
+* Vue 组件中的可复用功能
+* https://v3.cn.vuejs.org/guide/mixins.html

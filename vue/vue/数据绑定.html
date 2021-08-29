@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据绑定</title>
+  <script src="./js/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="counter">
+    <p>{{ message }}</p>
+    <input v-model="message" />
+    <br><br>
+    <input :value="message" />
+  </div>
+
+  <script>
+    const Counter = {
+      data() {
+        return {
+          message: 'Hello Vue!'
+        }
+      },
+    }
+
+    Vue.createApp(Counter).mount('#counter')
+  </script>
+
+</body>
+
+</html>
