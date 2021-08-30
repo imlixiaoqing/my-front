@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两数之和</title>
+</head>
+
+<body>
+  <script>
+    // https://leetcode-cn.com/problems/two-sum/
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number[]}
+     */
+    // 解1
+    // var twoSum = function (nums, target) {
+    //   const length = nums.length
+    //   for (let i = 0; i < length-1; i++) {
+    //     for (let j = i+1; j < length; j++) {
+    //       if ((nums[i] + nums[j]) === target) {
+    //         return [i, j]
+    //       }
+    //     }
+    //   }
+    // };
+    // 解2
+    var twoSum = function (nums, target) {
+      let tmp = new Map()
+      let res = []
+      nums.some((num, i) => {
+        if (!tmp.has(num)) {
+          tmp.set((target - num), i)
+        }
+        if (tmp.has(num)) {
+          res = [tmp.get(num), i]
+          return false
+        }
+      })
+      return res
+    }
+    // 解3
+    // var twoSum = function (nums, target) {
+    //   const length = nums.length
+    //   for (let i = 1; i < length; i++) {
+    //     for (let j = i; j < length; j++) {
+    //       if (nums[j - i] + nums[j] === target) {
+    //         return [j - i, j]
+    //       }
+    //     }
+    //   }
+    // };
+
+    // twoSum([2, 7, 11, 15], 9)
+    // twoSum([3, 2, 4], 6)
+    // twoSum([3, 3], 6)
+  </script>
+</body>
+
+</html>

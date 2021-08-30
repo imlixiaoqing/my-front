@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>无重复字符的最长子串</title>
+</head>
+
+<body>
+  <script>
+    // https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+    var lengthOfLongestSubstring = function (s) {
+      const length = s.length
+      if (length === 0) {
+        return 0
+      }
+      if (length === 1) {
+        return 1
+      }
+      s += s.split('')[length - 1]
+
+      let str = ''
+      let arr = []
+      for (let i = 0; i <= length; i++) {
+        let index = str.indexOf(s[i])
+        if (index !== -1) {
+          arr.push(str.length)
+          str = str.slice(index + 1)
+        }
+        str += s[i]
+      }
+      return Math.max(...arr)
+    };
+    // lengthOfLongestSubstring('abcdefg')
+  </script>
+</body>
+
+</html>
