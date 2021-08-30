@@ -8,6 +8,17 @@
 2. V：试图（View）：模板代码
 3. VM：视图模型（ViewModel）：Vue实例
 
+### vue中的数据代理
+
+* 通过vm对象来代理_data对象中属性的操作（读/写）
+* 好处
+  * 更加方便的操作data中的数据
+* 基本原理
+  * 通过Object.defineProperty()把_data对象中所有属性添加到vm上
+  * 为每一个添加到vm上的属性，都指定一个getter/setter
+  * 在getter/setter内部去操作（读/写）_data中对应的属性
+
+
 ### 单向绑定
 
 * 数据从data流向页面
