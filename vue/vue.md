@@ -18,7 +18,6 @@
   * 为每一个添加到vm上的属性，都指定一个getter/setter
   * 在getter/setter内部去操作（读/写）_data中对应的属性
 
-
 ### 单向绑定
 
 * 数据从data流向页面
@@ -30,6 +29,8 @@
 * 双向绑定一般应用在表单元素上
 
 ### 虚拟DOM
+
+* 虚拟dom对比(**diff**erence)算法
 
 ## 生命周期
 
@@ -343,10 +344,42 @@ Object.defineProperty()
 
 ### watch & computed
 
-* computed - 基于它们的响应式依赖进行缓存的
+1. computed能完成的功能，watch都可以实现
+2. watch能完成的功能，computed不一定能完成，例如：watch可以进行异步操作
+
+* computed - 基于响应式依赖进行缓存
+  * 属性不存在，通过已有属性计算得来
+  * 底层借助Object.defineProperty方法提供的getter和setter
+  * get执行
+    * 初次读取时执行一次
+    * 依赖数据改变时再次执行
+  * 内部有缓存机制，效率更高
+  * 绑定在vm身上，可直接读取
 * watch - 数据变化时执行异步或开销较大的操作时
+  * 被监视属性变化时，回调函数自动调用，进行相关操作
+  * 监视的属性必须存在
+  * 两种写法
+    * new Vue() watch 配置
+    * 通过vm.$watch监视
 
 ### Mixin
 
 * Vue 组件中的可复用功能
 * https://v3.cn.vuejs.org/guide/mixins.html
+
+### 虚拟dom中key的作用
+
+* key 是虚拟dom对象的标识
+* 数据变化时，旧虚拟dom与新虚拟dom 根据 key 和 数据内容 进行比较
+* key = index
+  * 导致真实dom发生更新，效率低
+  * 有输入框时，产生错误dom更新，界面出现问题
+
+### class样式
+
+* 字符串写法  :class="classVar"
+  * 适用于样式类名不确定，需要动态指定
+* 数组写法  :class="classArr"
+  * 绑定的样式个数不确定、名字也不确定
+* 对象写法  :class="classObj"
+  * 绑定的样式个数确定、名字也确定，但是动态决定用不用
