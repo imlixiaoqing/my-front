@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let data = {
+      name: 'John',
+      age: 36,
+    }
+
+    let obs = new Observer(data)
+    console.log(obs)
+
+    let vm = {}
+    vm._data = data = obs
+
+    function Observer(obj) {
+      const keys = Object.keys(obj)
+
+      // 构造函数 this 指向 实例对象 data
+      keys.forEach(key => {
+        // 使用 this 仿佛数据代理
+        Object.defineProperty(this, key, {
+          get() {
+            return obj[key]
+          },
+          set(value) {
+            obj[key] = value
+          }
+        })
+      })
+    }
+  </script>
+</body>
+
+</html>
