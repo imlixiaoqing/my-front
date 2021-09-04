@@ -20,4 +20,3 @@ https://blog.csdn.net/qq_42714262/article/details/119706383
   * git push -u origin master
 * 密码输入生成的令牌
   * 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
-  * test
