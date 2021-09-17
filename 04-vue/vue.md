@@ -120,18 +120,25 @@ new Vue()
 
 ### 兄弟
 
-* eventBus
+* GlobalEventBus
 
 ```javascript
-eventBus.js
-import Vue from 'vue'
-export default new Vue()
+main.js
+new Vue({
+  beforeCreate() {
+    Vue.prototype.$bus = this
+  }
+})
 
-import eventBus from 'eventBus.js'
+// 提供数据
+this.$bus.$emit('xxxxx', 数据)
 
-eventBus.$emit('handleSome', {})
-
-eventBus.$off('handlesome')
+// 接收数据
+this.$bus.$on('xxxxx', this.someMethods(数据))
+// 解绑数据
+beforeDestrory() {
+  this.$bus.$off('xxxxx)
+}
 ```
 
 ### 任意
