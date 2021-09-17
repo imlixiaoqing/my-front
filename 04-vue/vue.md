@@ -2,6 +2,14 @@
 
 ## 一些概念
 
+### 组件化编程
+
+* 组件
+  * 应用中局部功能代码和资源的集合
+* 传统式编程问题
+  * 依赖关系混乱，不好维护
+  * 代码复用率不高
+
 ### MVVM
 
 1. M：模型（ Model）：data中的数据
@@ -30,9 +38,11 @@
 
 ### 虚拟DOM
 
-* 虚拟dom对比(**diff**erence)算法
+* 虚拟dom**对比**(**diff**erence)算法
 
 ## 生命周期
+
+new Vue()
 
 ### 创建期间
 
@@ -138,7 +148,7 @@ eventBus.$off('handlesome')
 
 ### 数据流向
 
-<img src="https://vuex.vuejs.org/vuex.png" width="30%">
+<img src="https://vuex.vuejs.org/vuex.png" width="80%">
 
 ### State
 
@@ -174,6 +184,9 @@ this.$store.dispatch()
 ### 模式
 
 * hash(#)
+  * 内部传递的实际 URL 之前使用了一个哈希字符（#）
+    * 由于这部分 URL 从未被发送到服务器，所以它不需要在服务器层面上进行任何特殊处理
+    * 在 SEO 中确实有不好的影响。如果你担心这个问题，可以使用 HTML5 模式。
   * window.location 对象
   * window.onhashchange => hashchange 事件
   * location.hash / location.href
@@ -320,6 +333,32 @@ beforeRouteLeave(to, from, next) {
 
 * beforeRouteUpdate
 
+### 编程式导航、传参
+
+* 如果提供了 path，params 会被忽略
+* `params` 不能与 `path` 一起使用
+
+```js
+
+// 字符串路径
+router.push('/users/eduardo')
+
+// 带有路径的对象
+router.push({ path: '/users/eduardo' })
+
+// 带查询参数，结果是 /register?plan=private
+router.push({ path: '/register', query: { plan: 'private' } })
+
+// 带 hash，结果是 /about#team
+router.push({ path: '/about', hash: '#team' })
+
+// 命名的路由，并加上参数，让路由建立 url
+router.push({ name: 'user', params: { username: 'eduardo' } })
+
+```
+
+## 脚手架
+
 ## 知识点
 
 ### 双向数据绑定原理
@@ -365,7 +404,25 @@ Object.defineProperty()
 ### Mixin
 
 * Vue 组件中的可复用功能
-* https://v3.cn.vuejs.org/guide/mixins.html
+* 多个组件共用的配置提取成一个混入对象
+* 使用方式
+  * 定义混合
+  
+  ```js
+  {
+    data() {},
+    methods: {}
+  }
+  ```
+
+  * 使用混合
+  
+  ```js
+  // 全局
+  Vue.mixin(xxx)
+  // 局部
+  mixins: ['xxx']
+  ```
 
 ### 虚拟dom中key的作用
 
@@ -374,6 +431,10 @@ Object.defineProperty()
 * key = index
   * 导致真实dom发生更新，效率低
   * 有输入框时，产生错误dom更新，界面出现问题
+
+### 组件data函数形式
+
+* 避免组件被复用时，数据存在引用关系
 
 ### class样式
 
