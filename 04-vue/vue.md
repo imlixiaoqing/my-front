@@ -118,7 +118,7 @@ new Vue()
 * $attrs
 * $listeners
 
-### 兄弟
+### 任意-兄弟
 
 * GlobalEventBus
 
@@ -140,6 +140,11 @@ beforeDestrory() {
   this.$bus.$off('xxxxx)
 }
 ```
+
+### 任意-兄弟2
+
+* 消息订阅与发布
+* pubsub-js
 
 ### 任意
 
