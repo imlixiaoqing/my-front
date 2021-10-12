@@ -154,6 +154,7 @@ beforeDestrory() {
 
 ### 相关概念
 
+* store 对象
 * state，驱动应用的数据源；
 * view，以声明方式将 state 映射到视图；
 * actions，响应在 view 上的**用户输入**导致的状态变化。
@@ -175,6 +176,7 @@ beforeDestrory() {
 * store 中的状态的唯一方法是提交 mutation
 * 同步函数
   * 在 mutation 中混合异步调用会导致你的程序很难调试
+  * 开发者工具 & mutations
 
 ```javascript
 this.$store.commit()
@@ -184,6 +186,7 @@ this.$store.commit()
 
 * Action 提交的是 mutation，而不是直接变更状态。
 * Action 可以包含任意异步操作。
+* 直接更改state数据时，开发者工具无法捕获
 
 ```javascript
 this.$store.dispatch()

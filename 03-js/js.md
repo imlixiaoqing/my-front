@@ -1,6 +1,71 @@
 # JavaScript
 
+## ES6
+
+### 块级作用域
+
+### let命令
+
+* 代码块内有效
+* 不存在变量提升
+* 暂时性死区
+* 不允许重复声明
+
+### const命令
+
+* 常量 - 并不是变量的值不得改动，而是变量指向的那个**内存地址**所保存的数据不得改动
+
+### 解构赋值
+
+* 数组
+  
+```js
+let [a, b, c] = [1, 2, 3]
+let [foo, [[bar], baz]] = [1, [[2], 3]]
+```
+
+* 对象
+
+```js
+let { foo, bar } = { foo: 'aaa', bar: 'bbb' }
+let { foo: foo, bar: bar } = { foo: 'aaa', bar: 'bbb' }
+
+// 将现有对象的方法，赋值到某个变量
+// 例一
+let { log, sin, cos } = Math
+
+// 例二
+const { log } = console
+log('hello') // hello
+```
+
+* 字符串
+
+```js
+const [a, b, c, d, e] = 'hello'
+const [a, b, c, d, e] = [h, e, l, l, o]
+
+// [h, e, l, l, o].length
+let {length: len} = 'hello'
+let {length: len} = [h, e, l, l, o]
+len // 5
+```
+
+* 函数参数的解构赋值
+
+```js
+// undefined 就会触发函数参数的默认值
+[1, undefined, 3].map((x = 'yes') => x);
+// [ 1, 'yes', 3 ]
+```
+
 ## 一些概念
+
+### 执行上下文 & 作用域
+
+* 全局
+* 函数
+* 块级
 
 ### 表达式
 
@@ -53,12 +118,6 @@
   * 消息队列
 
 ## 函数
-
-## 执行上下文 & 作用域
-
-* 全局
-* 函数
-* 块级
 
 ## 知识点
 
