@@ -664,6 +664,49 @@ y // 2
 z // { a: 3, b: 4 }
 ```
 
+#### Object.is()
+
+比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致
+
+```js
+Object.is('foo', 'foo')
+// true
+Object.is({}, {})
+// false
+
++0 === -0 //true
+NaN === NaN // false
+
+Object.is(+0, -0) // false
+Object.is(NaN, NaN) // true
+```
+
+#### Object.assign()
+
+将源对象（source）的所有可枚举属性，复制到目标对象（target）
+
+```js
+const target = { a: 1 };
+
+const source1 = { b: 2 };
+const source2 = { c: 3 };
+
+Object.assign(target, source1, source2);
+target // {a:1, b:2, c:3}
+```
+
+后面的属性会覆盖前面的属性
+
+```js
+const target = { a: 1, b: 1 };
+
+const source1 = { b: 2, c: 2 };
+const source2 = { c: 3 };
+
+Object.assign(target, source1, source2);
+target // {a:1, b:2, c:3}
+```
+
 
 
 ## 一些概念
