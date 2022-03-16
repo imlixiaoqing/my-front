@@ -1275,6 +1275,24 @@ Reflect.ownKeys(myObject)
 
 ### Generator
 
+### Async
+
+### Class
+
+### Module
+
+### 异步遍历器
+
+```javascript
+async function f() {
+  for await (const x of createAsyncIterable(['a', 'b'])) {
+    console.log(x);
+  }
+}
+// a
+// b
+```
+
 ## 一些概念
 
 ### 执行上下文 & 作用域
@@ -1334,6 +1352,14 @@ Reflect.ownKeys(myObject)
   * 消息队列
 
 ## 函数
+
+#### 普通函数
+
+#### async 函数
+
+#### Generator 函数
+
+#### 异步 Generator 函数
 
 ## 知识点
 
